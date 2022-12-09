@@ -1,0 +1,125 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>{% block title %}{% endblock %}</title>
+
+<!-- meta -->
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- /meta -->
+
+<!-- styles -->
+<link type="text/css" rel="stylesheet" href="/static/css/font-awesome-4.1.0.min.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/bootstrap-3.1.1.min.css">
+<link type="text/css" rel="stylesheet" href="/static/css/bootstrap-theme-3.1.1.min.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/layout.main.css" />
+<!-- /styles -->
+
+
+<!-- scripts -->
+<script src="/static/js/libs/modernizr-2.8.2.min.js"></script>
+<!--[if lt IE 9]><script src="/static/js/libs/respond-1.4.2.min.js"></script><![endif]-->
+<!-- /scripts -->
+
+</head>
+<body>
+
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" style="border: 2px solid white; border-radius: 20px; background-color: grey; color: white;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Data Programming: Working With API </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
+            <li {% if request.endpoint == 'Paris' %} class="active" {% endif %}><a href="{{ url_for('Paris') }}">Paris</a></li>
+            <li {% if request.endpoint == 'Mumbai' %} class="active" {% endif %}><a href="{{ url_for('Mumbai') }}">Mumbai</a></li>
+            <li {% if request.endpoint == 'California' %} class="active" {% endif %}><a href="{{ url_for('California') }}">California</a></li>
+            <li {% if request.endpoint == 'Toronto' %} class="active" {% endif %}><a href="{{ url_for('Toronto') }}">Toronto</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <!-- Begin page content -->
+    <main id="content" role="main" class="container">
+	<div style="height:200; width: 100%; color:black;"> 
+		<p style="font-size:40px;"><b>Weather</b></p>
+		<p>
+			Weather is the mix of events that happen each day in our atmosphere. Weather is different in different parts of the world and changes over minutes, hours, days and weeks. Most weather happens in the troposphere, the part of Earth’s atmosphere that is closest to the ground.
+		</p>
+		<table border="2px">
+			<tr>
+				<td><b>Temperture</b></td>
+				<td>The degree or intensity of heat present in a substance or object, especially as expressed according to a comparative scale and shown by a thermometer or perceived by touch.</td>
+			</tr>
+			<tr>
+				<td><b>Humidity</b></td>
+				<td>Humidity is the concentration of water vapor present in the air. Water vapor, the gaseous state of water, is generally invisible to the human eye.</td>
+			</tr>
+			<tr>
+				<td><b>Wind</b></td>
+				<td>The perceptible natural movement of the air, especially in the form of a current of air blowing from a particular direction.</td>
+			</tr>
+			<tr>
+				<td><b>Precepitation</b></td>
+				<td>Water that falls from the clouds towards the ground, especially as rain or snow: Hail and sleet are types of precipitation. </td>
+			</tr>
+		
+		</table>
+		<marquee style="color:Red">
+			<p style="font-size:40px;">
+				<b>Visuals of different cities</b>
+			</p>  
+		</marquee>
+		
+		<br><br>
+	</div>
+    
+		
+		      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-block alert-error fade in">
+              <a class="close" data-dismiss="alert">&times;</a>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+
+    </main>
+
+  </div>
+
+  <div id="footer" style="border: 2px solid white; border-radius: 20px; background-color: grey; color:white;">
+    <div class="container">
+      <p><b>Georgian College Professor Ethan Davis</b></p>
+	  <marquee>
+	  <b>Team Members: </b><i>Raman Deepika, Viral Parshuttam Nena, Amritapl Singh, Ridhi </i>
+	  
+	  </marquee>
+      {% block footer %}{% endblock %}
+    </div>
+  </div>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script type="text/javascript" src="/static/js/libs/jquery-1.11.1.min.js"><\/script>')</script>
+  <script type="text/javascript" src="/static/js/libs/bootstrap-3.1.1.min.js" defer></script>
+  <script type="text/javascript" src="/static/js/plugins.js" defer></script>
+  <script type="text/javascript" src="/static/js/script.js" defer></script>
+
+</body>
+</html>
